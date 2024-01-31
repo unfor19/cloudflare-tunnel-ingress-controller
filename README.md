@@ -73,6 +73,24 @@ kubectl -n kubernetes-dashboard \
 
 - Done! Enjoy! 🎉
 
+## Helm Package
+
+- Set Chart Version
+  ```bash
+  export CHART_VERSION="0.0.10"
+  ```
+- Package chart
+  ```bash
+  helm package ./helm/cloudflare-tunnel-ingress-controller --version ${CHART_VERSION} --destination charts/
+  ```
+
+- Update `charts/index.yaml`
+  ```bash
+  helm repo index ./charts/
+  ```
+
+Commit and push to `gh-pages` branch to deploy.
+
 ## Alternative
 
 There is also an awesome project which could integrate with Cloudflare Tunnel as CRD, check it out [adyanth/cloudflare-operator](https://github.com/adyanth/cloudflare-operator)!
